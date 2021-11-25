@@ -8,7 +8,7 @@ app = Flask(__name__, template_folder="template")
 
 # Default route to the home page
 @app.route('/')
-def index():
+def home():
     return render_template('index.html')
 
 
