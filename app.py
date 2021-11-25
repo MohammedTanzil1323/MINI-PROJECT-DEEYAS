@@ -1,5 +1,5 @@
 # Package importing
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, url_for, jsonify, request
 import util
 
 # Declaring the flasks app name
@@ -11,8 +11,16 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+# favicon
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return url_for('static', filename='/images/favicon.png')
 
 #  Get the location info.
+
+
 @app.route('/get_location_names')
 def get_location_names():
     response = jsonify({'location': util.get_location_names()})
