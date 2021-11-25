@@ -55,6 +55,32 @@ def get_streetType():
 # Route to predict the house prices
 @app.route('/predict_home_price', methods=['GET', 'POST'])
 def predict_home_price():
+    '''
+    @ The predict_home_price docs:
+
+        House Features:
+            INT_SQFT – The interior Sq. Ft of the property
+            N_BEDROOM – The number of Bed rooms
+            N_BATHROOM - The number of bathrooms
+            N_ROOM – Total Number of Rooms
+            QS_ROOMS – The quality score assigned for rooms based on buyer reviews
+            QS_BATHROOM – The quality score assigned for bathroom based on buyer reviews
+            QS_BEDROOM – The quality score assigned for bedroom based on buyer reviews
+            QS_OVERALL – The Overall quality score assigned for the property
+
+        BUILD TYPE – 
+            House (ready to move-in)
+            Commercial (it's a property for rental / business)
+            Others (can be villa, penthouse etc.)
+
+        Surrounding and Locality
+            Parking Facility – Whether parking facility is available.
+
+        STREET TYPE - 
+            Gravel 
+            Paved
+            No Access
+    '''
     if request.method == "POST":
         # String datatype attributes
         location = request.form.get('ui-location')
@@ -72,12 +98,17 @@ def predict_home_price():
         QS_BEDROOM = int(request.form.get('ui-qs-bedroom'))
         QS_OVERALL = int(request.form.get('ui-qs-overall'))
 
-        my_response = util.get_estimated_price(location, parking, houseType, streetType,
-                                               INT_SQFT, N_BEDROOM, N_BATHROOM, N_ROOM,
-                                               QS_ROOMS, QS_BATHROOM, QS_BEDROOM,
-                                               QS_OVERALL)
-
-        return render_template('index.html', response=my_response)
+        print('got the values in here!!!')
+        response = jsonify({
+            'estimated_price':
+            util.get_estimated_price(location, parking, houseType, streetType,
+                                     INT_SQFT, N_BEDROOM, N_BATHROOM, N_ROOM,
+                                     QS_ROOMS, QS_BATHROOM, QS_BEDROOM,
+                                     QS_OVERALL)
+        })
+        print(response)
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return render_template('PriceEstimator.html', response=response.json)
 
 
 if __name__ == '__main__':
