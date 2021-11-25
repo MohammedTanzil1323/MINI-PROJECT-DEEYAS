@@ -58,7 +58,7 @@ def predict_home_price():
     if request.method == "POST":
         # String datatype attributes
         location = request.form.get('ui-location')
-        parking = request.form.get('ui-parking-facility')
+        parking = "yes"
         houseType = request.form.get('ui-house-type')
         streetType = request.form.get('ui-street-type')
 
