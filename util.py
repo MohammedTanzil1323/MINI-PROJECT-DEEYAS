@@ -11,6 +11,29 @@ __streetType = None
 __data_columns = None
 __model = None
 
+def load_saved_artifacts():
+    print(" Initializing Saved Artifacts ....")
+    global __data_columns
+    global __locations
+    global __parking
+    global __houseType
+    global __streetType
+    global __model
+
+    # opening the columns.json file in the read mode
+    with open('./artifacts/columns.json', 'r') as f:
+        __data_columns = json.load(f)['data_columns']
+        __locations = __data_columns[8:15]
+        __parking = __data_columns[15:17]
+        __houseType = __data_columns[17:20]
+        __streetType = __data_columns[20:]
+
+    # opening the Machine_Learning_Model.pickle binary file in read binary mode
+    with open("./artifacts/Machine_Learning_Model.pickle", "rb") as f:
+        __model = pickle.load(f)
+
+    print("Loading the saved artifacts ....... Done")
+
 # ================================================== Function to get 'estimated house price' =============================================
 
 
@@ -26,7 +49,7 @@ def get_estimated_price(location, parking, houseType, streetType, INT_SQFT, N_BE
         house_index = -1
         street_index = -1
 
-    x = np.zeros(8)
+    x = np.zeros(len(__data_columns))
     x[0] = INT_SQFT
     x[1] = N_BEDROOM
     x[2] = N_BATHROOM
@@ -84,28 +107,7 @@ def get_streetType():
 # ================================================== Function to load the saved artifacts ==============================================
 
 
-def load_saved_artifacts():
-    print(" Initializing Saved Artifacts ....")
-    global __data_columns
-    global __locations
-    global __parking
-    global __houseType
-    global __streetType
-    global __model
 
-    # opening the columns.json file in the read mode
-    with open('./artifacts/columns.json', 'r') as f:
-        __data_columns = json.load(f)['data_columns']
-        __locations = __data_columns[8:15]
-        __parking = __data_columns[15:17]
-        __houseType = __data_columns[17:20]
-        __streetType = __data_columns[20:]
-
-    # opening the Machine_Learning_Model.pickle binary file in read binary mode
-    with open("./artifacts/Machine_Learning_Model.pickle", "rb") as f:
-        __model = pickle.load(f)
-
-    print("Loading the saved artifacts ....... Done")
 
 
 # ==================================================================================================================================
