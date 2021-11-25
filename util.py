@@ -14,9 +14,7 @@ __model = None
 # ================================================== Function to get 'estimated house price' =============================================
 
 
-def get_estimated_price(location, parking, houseType, streetType, INT_SQFT,
-                        N_BEDROOM, N_BATHROOM, N_ROOM, QS_ROOMS, QS_BATHROOM,
-                        QS_BEDROOM, QS_OVERALL):
+def get_estimated_price(location, parking, houseType, streetType, INT_SQFT, N_BEDROOM, N_BATHROOM, N_ROOM, QS_ROOMS, QS_BATHROOM, QS_BEDROOM, QS_OVERALL):
     try:
         loc_index = __data_columns.index(location.lower())
         park_index = __data_columns.index(parking.lower())
@@ -28,7 +26,7 @@ def get_estimated_price(location, parking, houseType, streetType, INT_SQFT,
         house_index = -1
         street_index = -1
 
-    x = np.zeros(len(__data_columns))
+    x = np.zeros(8)
     x[0] = INT_SQFT
     x[1] = N_BEDROOM
     x[2] = N_BATHROOM
