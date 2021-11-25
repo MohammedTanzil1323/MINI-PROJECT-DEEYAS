@@ -5,6 +5,14 @@ import util
 # Declaring the flasks app name
 app = Flask(__name__)
 
+'''
+in flask we have routes, I won't be able to explain flask in detail but I'll just tell which line will do what function
+
+app.route() -- this helps in getting all the values and also navigation, if there are multiple pages
+as we have only single html file, there is only one route to html file
+
+remaining all the routes are to get the inputs which we have entered in our form
+'''
 
 # Default route to the home page
 @app.route('/')
@@ -53,6 +61,11 @@ def get_streetType():
 
 
 # Route to predict the house prices
+
+'''
+this is our function, in which we take the inputs and give it to the trained model to process
+and also to get the output
+'''
 @app.route('/predict_home_price', methods=['GET', 'POST'])
 def predict_home_price():
     if request.method == "POST":
@@ -73,9 +86,11 @@ def predict_home_price():
         QS_OVERALL = int(request.form.get('ui-qs-overall'))
 
         print('got the values in here!!!')
+        #the below line is to load our trained model which is in the artifacts folder
         util.load_saved_artifacts()
+        #the below line is to send all the inputs to the model and get the output from the model
         my_response = util.get_estimated_price(location, parking, houseType, streetType, INT_SQFT, N_BEDROOM, N_BATHROOM, N_ROOM, QS_ROOMS, QS_BATHROOM, QS_BEDROOM, QS_OVERALL)
-
+        #the below line sends the output to the html file
         return render_template('index.html', response=my_response)
 
 

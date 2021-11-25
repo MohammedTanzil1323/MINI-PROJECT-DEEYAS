@@ -11,6 +11,7 @@ __data_columns = None
 __model = None
 
 def load_saved_artifacts():
+    #as the name tells, this funciton is used to load the trained model (.pickle file)
     print(" Initializing Saved Artifacts ....")
     global __data_columns
     global __locations
@@ -35,6 +36,8 @@ def load_saved_artifacts():
 
 # ================================================== Function to get 'estimated house price' =============================================
 
+#I won't be able to explain the below function in detail, but what it does it, it takes all the inputs and also
+# use our trained model to get the output and sends back to the app.py file
 
 def get_estimated_price(location, parking, houseType, streetType, INT_SQFT, N_BEDROOM, N_BATHROOM, N_ROOM, QS_ROOMS, QS_BATHROOM, QS_BEDROOM, QS_OVERALL):
     try:
@@ -99,14 +102,3 @@ def get_houseType():
 # get the location names
 def get_streetType():
     return __streetType
-
-
-# ======================================================================================================================================
-
-# ================================================== Function to load the saved artifacts ==============================================
-
-
-
-
-
-# ==================================================================================================================================

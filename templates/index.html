@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@500&display=swap"
         rel="stylesheet">
 
-    <!-- linking css file -->
+    <!-- linking css file --> <!-- mostly the code will be similar but to link the external files for flask we need to do it as below -->
     <link rel="stylesheet" href="{{ url_for('static', filename='/css/estimate.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}">
 
@@ -29,6 +29,13 @@
         <h3 class="text-center" id="heading">House Price Prediction using Machine Learning</h3>
         <h6 class="text-center">*using Chennai House Price Data</h6>
 
+        <!-- here the form starts, and when a user submits the form a action happens which is url_for('predict_home_price')
+         meaning, the html form will send all the entered data to the app.py file, and since he method is POST 
+         the values wont be visible in the website url tab
+
+         in the action value, predict_home_price is the function which we have created in the app.py file
+        
+        -->
         <form class="form-horizontal" id="info" action="{{ url_for('predict_home_price')}}" method="POST">
 
             <!-- Location -->
@@ -451,6 +458,11 @@
                 <button type="submit" class="btn btn-grad">Get estimated Price</button>
             </div>
             <h6 style="text-align: center;padding-top: 15px;">As per the given inputs, the estimated price is (in Lakhs)</h6>
+
+            <!-- 
+                as you can see below, {{response }} here the output of our trained model will appear
+                this is where we get the output of the model
+             -->
             <div id="uiEstimatedPrice" class="result">
                 <h6 style="padding-top: 10px;font-weight: bold;">{{response}}</h6>
             </div>
