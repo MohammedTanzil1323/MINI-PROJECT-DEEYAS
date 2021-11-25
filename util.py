@@ -1,7 +1,6 @@
 import json
 import pickle
 import numpy as np
-import sklearn
 
 # GLOBAL VARIABLES
 __locations = None

@@ -79,7 +79,6 @@ def predict_home_price():
         return render_template('index.html', response=my_response)
 
 
-if __name__ == '__main__':
-    # Loading the artifacts....
+if __name__ == "__main__":
     util.load_saved_artifacts()
-    app.run(debug=True)
+    app.run()
