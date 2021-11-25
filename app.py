@@ -3,12 +3,12 @@ from flask import Flask, render_template, jsonify, request
 import util
 
 # Declaring the flasks app name
-app = Flask(__name__, template_folder="template")
+app = Flask(__name__)
 
 
 # Default route to the home page
 @app.route('/')
-def home():
+def index():
     return render_template('index.html')
 
 
