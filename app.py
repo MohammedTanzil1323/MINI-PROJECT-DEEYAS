@@ -73,6 +73,7 @@ def predict_home_price():
         QS_OVERALL = int(request.form.get('ui-qs-overall'))
 
         print('got the values in here!!!')
+        util.load_saved_artifacts()
         my_response = util.get_estimated_price(location, parking, houseType, streetType, INT_SQFT, N_BEDROOM, N_BATHROOM, N_ROOM, QS_ROOMS, QS_BATHROOM, QS_BEDROOM, QS_OVERALL)
 
         my_response.headers.add('Access-Control-Allow-Origin', '*')
@@ -80,5 +81,4 @@ def predict_home_price():
 
 
 if __name__ == "__main__":
-    util.load_saved_artifacts()
     app.run()
