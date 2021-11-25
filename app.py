@@ -73,8 +73,7 @@ def predict_home_price():
         QS_OVERALL = int(request.form.get('ui-qs-overall'))
 
         print('got the values in here!!!')
-        my_response = util.get_estimated_price(location, parking, houseType, streetType, INT_SQFT,
-                                               N_BEDROOM, N_BATHROOM, N_ROOM, QS_ROOMS, QS_BATHROOM, QS_BEDROOM, QS_OVERALL)
+        my_response = util.get_estimated_price(location, parking, houseType, streetType, INT_SQFT, N_BEDROOM, N_BATHROOM, N_ROOM, QS_ROOMS, QS_BATHROOM, QS_BEDROOM, QS_OVERALL)
 
         my_response.headers.add('Access-Control-Allow-Origin', '*')
         return render_template('index.html', response=my_response)
