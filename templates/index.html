@@ -27,7 +27,7 @@
     <div class="container">
 
         <h3 class="text-center" id="heading">House Price Prediction using Machine Learning</h3>
-        <h6 class="text-center">*using Chennai House Price Data</h6>
+        
 
         <!-- here the form starts, and when a user submits the form a action happens which is url_for('predict_home_price')
          meaning, the html form will send all the entered data to the app.py file, and since he method is POST 
@@ -125,7 +125,7 @@
 
                 <!-- Number of Bedrooms -->
                 <div class="radioOption">
-                    <label for="ui-n-bedroom" class="header">Total Number of Bedrooms you have</label>
+                    <label for="ui-n-bedroom" class="header">Total Number of Bedrooms you need</label>
                     <div id="totalBedroom">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" id="radio-n-bedroom-1" name="ui-n-bedroom"
@@ -171,7 +171,7 @@
 
                 <!-- Number of Bathrooms -->
                 <div class="radioOption">
-                    <label for="ui-n-bathroom" class="header">Total Number of Bathrooms you have</label>
+                    <label for="ui-n-bathroom" class="header">Total Number of Bathrooms you need</label>
                     <div id="ui-n-bathroom">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" id="radio-n-bathroom-1" name="ui-n-bathroom"
@@ -217,7 +217,7 @@
 
                 <!-- Total Number of rooms -->
                 <div class="radioOption">
-                    <label for="ui-n-room" class="header">Total Number of rooms you have</label>
+                    <label for="ui-n-room" class="header">Total Number of rooms you need</label>
                     <div id="ui-n-room">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" id="radio-n-room-1" name="ui-n-room" value="1"
@@ -454,6 +454,7 @@
                         aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default1" required>
                 </div>
             </div>
+            
             <div class="text-center">
                 <button type="submit" class="btn btn-grad">Get estimated Price</button>
             </div>
